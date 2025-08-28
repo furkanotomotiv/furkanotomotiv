@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Hizmetler - Furkan Otomotiv</title>
+
+  <!-- Global stil -->
+  <link rel="stylesheet" href="style.css" />
+
+  <!-- AOS (Animasyonlar) -->
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+
+  <style>
+    .page-header {
+      padding: 100px 0 28px;
+      text-align: center;
+      color: #fff;
+    }
+    .page-header h1 {
+      font-size: 2.4rem;
+      margin-bottom: 8px;
+      color: #e63946;
+      letter-spacing: .5px;
+    }
+    .page-header p {
+      color: #d3d3d3;
+      max-width: 760px;
+      margin: 0 auto;
+    }
+    .services.container { padding-top: 16px; }
+    .service-card .icon-wrapper{
+      width: 88px;
+      height: 88px;
+      margin: 0 auto 14px;
+      border-radius: 50%;
+      background: linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.02));
+      display: grid;
+      place-items: center;
+      box-shadow: 0 6px 18px rgba(0,0,0,.45) inset, 0 6px 18px rgba(0,0,0,.35);
+      transition: transform .25s ease;
+    }
+    .service-card:hover .icon-wrapper{ transform: translateY(-2px) scale(1.03); }
+    .service-card .icon-wrapper img{
+      width: 48px;
+      height: 48px;
+      object-fit: contain;
+    }
+    .service-card h3{ margin: 8px 0 6px; font-size: 1.15rem; color:#e63946; }
+    .service-card p{ color:#cfcfcf; font-size:.96rem; }
+    .services-grid{
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 22px;
+      margin-bottom: 70px;
+    }
+    .service-card{
+      background: rgba(255,255,255,.05);
+      padding: 1.35rem 1.25rem;
+      border-radius: 14px;
+      text-align: center;
+      backdrop-filter: blur(6px);
+      box-shadow: 0 6px 18px rgba(0,0,0,.5);
+      transition: transform .22s ease, box-shadow .22s ease, border-color .22s ease;
+      border: 1px solid rgba(255,255,255,.06);
+    }
+    .service-card:hover{
+      transform: translateY(-8px);
+      box-shadow: 0 18px 36px rgba(230,57,70,.7);
+      border-color: rgba(230,57,70,.45);
+    }
+    @media (max-width: 768px){
+      .page-header{ padding: 86px 0 22px; }
+      .page-header h1{ font-size: 2rem; }
+      .service-card .icon-wrapper{ width: 82px; height: 82px; }
+      .service-card .icon-wrapper img{ width: 44px; height: 44px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header>
+    <nav class="navbar">
+      <div class="logo">Furkan Otomotiv</div>
+      <button class="hamburger" id="hamburger" aria-label="Menüyü aç/kapat" aria-expanded="false" aria-controls="primary-navigation">
+        <span></span><span></span><span></span>
+      </button>
+      <ul class="nav-links" id="primary-navigation">
+        <li><a href="index.html">Ana Sayfa</a></li>
+        <li><a href="hizmetler.html" aria-current="page">Hizmetler</a></li>
+        <li><a href="bayilikler.html">Bayilikler</a></li>
+        <li><a href="iletisim.html">İletişim</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- HİZMETLER BAŞLIK -->
+  <section class="page-header container" data-aos="fade-up">
+    <h1>Hizmetlerimiz</h1>
+    <p>Profesyonel oto elektrik, klima, multimedya, ses sistemleri ve daha fazlası. Garantili ve temiz işçilikle aracınıza değer katıyoruz.</p>
+  </section>
+
+  <!-- HİZMETLER -->
+  <section class="services container">
+    <div class="services-grid">
+
+      <!-- Orijinal hizmetler -->
+      <article class="service-card" data-aos="fade-up" data-aos-delay="80">
+        <div class="icon-wrapper">
+          <img src="oto-elektirik.png" alt="Oto elektrik ikonu" loading="lazy" />
+        </div>
+        <h3>Oto Elektrik</h3>
+        <p>Araç elektrik sistemlerinde arıza tespiti, bakım ve onarım. Akü, alternatör, marş ve tesisat çözümleri.</p>
+      </article>
+
+      <article class="service-card" data-aos="fade-up" data-aos-delay="140">
+        <div class="icon-wrapper">
+          <img src="klima.png" alt="Klima ikonu" loading="lazy" />
+        </div>
+        <h3>Klima Bakımı</h3>
+        <p>Klima gaz dolumu, temizlik ve performans optimizasyonu. Sızıntı kontrolü ve parça değişimi.</p>
+      </article>
+
+      <article class="service-card" data-aos="fade-up" data-aos-delay="200">
+        <div class="icon-wrapper">
+          <img src="multimedya.png" alt="Multimedya ikonu" loading="lazy" />
+        </div>
+        <h3>Multimedya</h3>
+        <p>CarPlay/Android Auto aktivasyonu, ekran montajı ve yazılım güncellemeleri. Geri görüş entegrasyonu.</p>
+      </article>
+
+      <article class="service-card" data-aos="fade-up" data-aos-delay="260">
+        <div class="icon-wrapper">
+          <img src="ses-sistemi.png" alt="Ses sistemi ikonu" loading="lazy" />
+        </div>
+        <h3>Ses Sistemleri</h3>
+        <p>Anfi, subwoofer ve hoparlör montajı. Akustik ayar ve yalıtım çözümleriyle net, güçlü ses.</p>
+      </article>
+
+      <article class="service-card" data-aos="fade-up" data-aos-delay="320">
+        <div class="icon-wrapper">
+          <img src="park-sensoru.png" alt="Park sensörü ikonu" loading="lazy" />
+        </div>
+        <h3>Park Sensörü</h3>
+        <p>Park sensörü montajı. OEM’e yakın görünüm ve güvenli park.</p>
+      </article>
+
+      <article class="service-card" data-aos="fade-up" data-aos-delay="380">
+        <div class="icon-wrapper">
+          <img src="gizli-ozellik.png" alt="Diagnostik cihaz ikonu" loading="lazy" />
+        </div>
+        <h3>VAG / Gizli Özellik</h3>
+        <p>VagCom & OBD ile modül kodlama ve gizli özellik açma. Sürüşe özel kişiselleştirmeler.</p>
+      </article>
+
+      <!-- Yeni hizmetler -->
+      <article class="service-card" data-aos="fade-up" data-aos-delay="440">
+        <div class="icon-wrapper">
+          <img src="aku.png" alt="Akü ikonu" loading="lazy" />
+        </div>
+        <h3>Akü Değişimi</h3>
+        <p>Aracınıza uygun akü montajı, test ve eski akünün geri dönüşümü hizmeti.</p>
+      </article>
+
+      <article class="service-card" data-aos="fade-up" data-aos-delay="500">
+        <div class="icon-wrapper">
+          <img src="camera.png" alt="kamera ikonu" loading="lazy" />
+        </div>
+        <h3>Geri Görüş Kamerası</h3>
+        <p>Ekranlı araçlarınıza geri görüş kamera montajı yapılır</p>
+      </article>
+
+      <article class="service-card" data-aos="fade-up" data-aos-delay="560">
+        <div class="icon-wrapper">
+          <img src="led.png" alt="Led Zenom ikonu" loading="lazy" />
+        </div>
+        <h3>Led Zenom</h3>
+        <p>Daha iyi yol görüşü için</p>
+      </article>
+
+      <article class="service-card" data-aos="fade-up" data-aos-delay="620">
+        <div class="icon-wrapper">
+          <img src="ampul.png" alt="Ampul ikonu" loading="lazy" />
+        </div>
+        <h3>Araç Ampul Değişimi</h3>
+        <p>Araç iç dış ampul değişimi yapılır</p>
+      </article>
+
+      <article class="service-card" data-aos="fade-up" data-aos-delay="680">
+        <div class="icon-wrapper">
+          <img src="lock.png" alt="Kapı kilit motoru ikonu" loading="lazy" />
+        </div>
+        <h3>Kapı Kilit Motoru</h3>
+        <p>Kapı kilit motoru değişimi yapılır</p>
+      </article>
+
+      <article class="service-card" data-aos="fade-up" data-aos-delay="740">
+        <div class="icon-wrapper">
+          <img src="obd.png" alt="OBD ikonu" loading="lazy" />
+        </div>
+        <h3>OBD</h3>
+        <p>Arıza tespiti yapılır</p>
+      </article>
+
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>© 2025 Furkan Otomotiv. Tüm hakları saklıdır.</p>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>
+    AOS.init({ duration: 800, easing: "ease-in-out", once: true });
+
+    const hamburger = document.getElementById('hamburger');
+    const nav = document.getElementById('primary-navigation');
+
+    hamburger.addEventListener('click', () => {
+      nav.classList.toggle('active');
+      hamburger.classList.toggle('open');
+      const expanded = hamburger.getAttribute('aria-expanded') === 'true';
+      hamburger.setAttribute('aria-expanded', !expanded);
+    });
+  </script>
+</body>
+</html>

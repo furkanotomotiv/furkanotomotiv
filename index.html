@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Furkan Otomotiv</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+</head>
+<body>
+
+  <!-- Header -->
+  <header>
+    <nav class="navbar">
+      <div class="logo">Furkan Otomotiv</div>
+
+      <!-- Hamburger Menü Butonu -->
+      <div class="hamburger" id="hamburger">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+
+      <!-- Menü Linkleri -->
+      <ul class="nav-links" id="nav-links">
+        <li><a href="index.html" class="active">Ana Sayfa</a></li>
+        <li><a href="hizmetler.html">Hizmetler</a></li>
+        <li><a href="bayilikler.html">Bayilikler</a></li>
+        <li><a href="iletisim.html">İletişim</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Hero Bölümü -->
+  <section class="hero">
+    <video autoplay muted loop class="hero-video">
+      <source src="hero-bg.mp4" type="video/mp4">
+    </video>
+    <div class="hero-content" data-aos="fade-up">
+      <h1>Furkan Otomotiv</h1>
+      <p>Oto Elektrik, Klima, Multimedya ve Daha Fazlası</p>
+      <a href="hizmetler.html" class="btn">Hizmetlerimizi Gör</a>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <p>© 2025 Furkan Otomotiv. Tüm hakları saklıdır.</p>
+    </div>
+  </footer>
+
+  <!-- Scriptler -->
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>
+    AOS.init({ duration: 900, once: true });
+
+    // Hamburger Menü Scripti
+    const hamburger = document.getElementById('hamburger');
+    const navLinks = document.getElementById('nav-links');
+
+    hamburger.addEventListener('click', () => {
+      navLinks.classList.toggle('active');
+      hamburger.classList.toggle('active');
+    });
+  </script>
+</body>
+</html>

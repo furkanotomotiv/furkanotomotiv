@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Bayilikler - Furkan Otomotiv</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+  <style>
+    body {
+      margin: 0;
+      background: #0e0e0e;
+      font-family: Arial, sans-serif;
+      color: #fff;
+    }
+
+    /* NAVBAR */
+    header {
+      background: #111;
+      padding: 1rem 2rem;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 1000;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+    }
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .logo {
+      font-size: 1.5rem;
+      font-weight: bold;
+      color: #e63946;
+    }
+    .nav-links {
+      list-style: none;
+      display: flex;
+      gap: 1.5rem;
+    }
+    .nav-links a {
+      text-decoration: none;
+      color: #fff;
+      transition: color 0.3s;
+    }
+    .nav-links a:hover,
+    .nav-links a.active {
+      color: #e63946;
+    }
+
+    /* Hamburger Menü */
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      cursor: pointer;
+      gap: 5px;
+    }
+    .hamburger span {
+      width: 25px;
+      height: 3px;
+      background: #fff;
+      border-radius: 2px;
+      transition: 0.3s;
+    }
+
+    /* Mobil Menü */
+    @media (max-width: 768px) {
+      .hamburger { display: flex; }
+      .nav-links {
+        display: none;
+        position: absolute;
+        top: 70px;
+        right: 20px;
+        background: #111;
+        flex-direction: column;
+        width: 200px;
+        padding: 1rem;
+        border-radius: 8px;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.5);
+      }
+      .nav-links.active { display: flex; }
+    }
+
+    /* Hamburger Animasyonu */
+    .hamburger.open span:nth-child(1) {
+      transform: rotate(45deg) translate(5px, 5px);
+    }
+    .hamburger.open span:nth-child(2) {
+      opacity: 0;
+    }
+    .hamburger.open span:nth-child(3) {
+      transform: rotate(-45deg) translate(5px, -5px);
+    }
+
+    /* Genel başlık */
+    .page-header {
+      padding: 3rem 1rem 1.5rem;
+      text-align: center;
+      color: #fff;
+      margin-top: 90px;
+    }
+    .page-header h1 {
+      font-size: 2.8rem;
+      margin-bottom: 0.3rem;
+      color: #e63946;
+      text-shadow: 0 0 6px rgba(230, 57, 70, 0.8);
+    }
+    .page-header p {
+      font-size: 1.2rem;
+      color: #ddd;
+    }
+
+    /* BAYİLİKLER GRID - TEK SÜTUN */
+    .brands {
+      max-width: 600px;
+      margin: 0 auto 4rem;
+      padding: 0 1rem;
+    }
+    .brands-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+    }
+
+    /* BAYİLİK KARTLARI */
+    .brand-card {
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 16px;
+      padding: 2rem;
+      text-align: center;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.6);
+      backdrop-filter: blur(8px);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      cursor: pointer;
+      height: 220px; /* Hepsi eşit yükseklik */
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .brand-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 12px 36px rgba(230, 57, 70, 0.7);
+    }
+    .brand-card img {
+      max-width: 180px;
+      max-height: 100px;
+      object-fit: contain;
+      filter: drop-shadow(0 0 10px rgba(255,255,255,0.2));
+      transition: transform 0.3s ease;
+    }
+    .brand-card:hover img {
+      transform: scale(1.05);
+      filter: drop-shadow(0 0 15px rgba(230,57,70,0.7));
+    }
+
+    /* FOOTER */
+    footer {
+      text-align: center;
+      padding: 1.5rem;
+      background: #111;
+      color: #aaa;
+      font-size: 0.9rem;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header>
+    <nav class="navbar">
+      <div class="logo">Furkan Otomotiv</div>
+      <div class="hamburger" id="hamburger"><span></span><span></span><span></span></div>
+      <ul class="nav-links">
+        <li><a href="index.html">Ana Sayfa</a></li>
+        <li><a href="hizmetler.html">Hizmetler</a></li>
+        <li><a href="bayilikler.html" class="active">Bayilikler</a></li>
+        <li><a href="iletisim.html">İletişim</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- BAYİLİKLER BAŞLIK -->
+  <section class="page-header container" data-aos="fade-up">
+    <h1>Bayiliklerimiz</h1>
+    <p>Birlikte çalıştığımız markalar</p>
+  </section>
+
+  <!-- BAYİLİK KARTLARI -->
+  <section class="brands container">
+    <div class="brands-grid">
+      <article class="brand-card" data-aos="fade-up" data-aos-delay="100">
+        <img src="mutlu.png" alt="Mutlu Akü" />
+      </article>
+
+      <article class="brand-card" data-aos="fade-up" data-aos-delay="200">
+        <img src="varta.png" alt="Varta" />
+      </article>
+
+      <article class="brand-card" data-aos="fade-up" data-aos-delay="300">
+        <img src="autopower.png" alt="Autopower" />
+      </article>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container">
+      <p>© 2025 Furkan Otomotiv. Tüm hakları saklıdır.</p>
+    </div>
+  </footer>
+
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>
+    AOS.init({ duration: 900, once: true });
+
+    // Menü aç/kapa
+    const hamburger = document.getElementById('hamburger');
+    const navLinks = document.querySelector('.nav-links');
+
+    hamburger.addEventListener('click', () => {
+      navLinks.classList.toggle('active');
+      hamburger.classList.toggle('open');
+    });
+  </script>
+</body>
+</html>
