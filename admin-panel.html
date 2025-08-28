@@ -1,0 +1,574 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Furkan Otomotiv Admin Panel</title>
+<style>
+  body {
+    background: #121212;
+    color: #eee;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0; min-height: 100vh;
+    display: flex; flex-direction: column;
+  }
+  header {
+    background: #1f1f1f;
+    padding: 1rem 2rem;
+    display: flex; justify-content: space-between; align-items: center;
+    box-shadow: 0 0 12px #e63946;
+  }
+  header h1 {
+    margin: 0;
+    color: #e63946;
+    font-weight: 700;
+  }
+  button#logoutBtn {
+    background: #e63946;
+    border: none;
+    padding: 0.6rem 1.2rem;
+    border-radius: 8px;
+    color: white;
+    cursor: pointer;
+    font-weight: 600;
+    transition: background 0.3s;
+  }
+  button#logoutBtn:hover {
+    background: #a22222;
+  }
+  main {
+    flex-grow: 1;
+    padding: 2rem;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+  nav {
+    display: flex;
+    gap: 2rem;
+    margin-bottom: 2rem;
+  }
+  nav button {
+    background: transparent;
+    border: 2px solid #e63946;
+    color: #e63946;
+    padding: 0.6rem 1.5rem;
+    font-size: 1rem;
+    font-weight: 600;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.3s, color 0.3s;
+  }
+  nav button.active,
+  nav button:hover {
+    background: #e63946;
+    color: #121212;
+  }
+  section.admin-section {
+    display: none;
+    background: #222;
+    border-radius: 12px;
+    padding: 1.5rem;
+    box-shadow: 0 8px 24px rgba(230, 57, 70, 0.7);
+    color: #fff;
+  }
+  section.admin-section.active {
+    display: block;
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 1.5rem;
+  }
+  th, td {
+    padding: 0.75rem 1rem;
+    border-bottom: 1px solid #444;
+    text-align: left;
+    vertical-align: middle;
+  }
+  th {
+    background: #e63946;
+    color: #121212;
+  }
+  button.action-btn {
+    background: #a22222;
+    border: none;
+    color: #fff;
+    padding: 0.3rem 0.7rem;
+    border-radius: 6px;
+    cursor: pointer;
+    margin-right: 0.5rem;
+    font-size: 0.9rem;
+    transition: background 0.3s;
+  }
+  button.action-btn:hover {
+    background: #7a1a1a;
+  }
+  form input, form textarea {
+    width: 100%;
+    margin-bottom: 1rem;
+    padding: 0.7rem;
+    border-radius: 8px;
+    border: none;
+    font-size: 1rem;
+    background: #333;
+    color: #eee;
+  }
+  form textarea {
+    resize: vertical;
+  }
+  form button.submit-btn {
+    background: #e63946;
+    color: white;
+    border: none;
+    padding: 0.9rem 1.5rem;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 700;
+    transition: background 0.3s;
+  }
+  form button.submit-btn:hover {
+    background: #a22222;
+  }
+  img.media-thumb {
+    max-width: 100px;
+    border-radius: 6px;
+  }
+  video.media-thumb {
+    max-width: 120px;
+    border-radius: 6px;
+  }
+  @media (max-width: 700px) {
+    nav {
+      flex-direction: column;
+      gap: 1rem;
+    }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>Furkan Otomotiv - Admin Panel</h1>
+  <button id="logoutBtn">Çıkış Yap</button>
+  <button id="changePassBtn" style="background:#444; border:none; padding:0.5rem 1rem; border-radius:8px; color:#e63946; cursor:pointer; margin-left:1rem;">
+  Şifre Değiştir
+</button>
+
+</header>
+
+<main>
+  <nav>
+    <button id="btnHizmetler" class="active">Hizmetler Yönetimi</button>
+    <button id="btnBayilikler">Bayilikler Yönetimi</button>
+    <button id="btnYapilanIsler">Yapılan İşler Yönetimi</button>
+  </nav>
+
+  <!-- Hizmetler Bölümü -->
+  <section id="hizmetlerSection" class="admin-section active">
+    <h2>Hizmetler Yönetimi</h2>
+    <table id="hizmetlerTable">
+      <thead>
+        <tr><th>Başlık</th><th>Açıklama</th><th>İşlemler</th></tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+    <form id="hizmetEkleForm">
+      <h3>Yeni Hizmet Ekle</h3>
+      <input type="text" id="hizmetBaslik" placeholder="Hizmet Başlığı" required />
+      <textarea id="hizmetAciklama" rows="3" placeholder="Hizmet Açıklaması" required></textarea>
+      <button type="submit" class="submit-btn">Ekle</button>
+    </form>
+  </section>
+
+  <!-- Bayilikler Bölümü -->
+  <section id="bayiliklerSection" class="admin-section">
+    <h2>Bayilikler Yönetimi</h2>
+    <table id="bayiliklerTable">
+      <thead>
+        <tr><th>Bayilik Adı</th><th>Açıklama</th><th>İşlemler</th></tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+    <form id="bayilikEkleForm">
+      <h3>Yeni Bayilik Ekle</h3>
+      <input type="text" id="bayilikAd" placeholder="Bayilik Adı" required />
+      <textarea id="bayilikAciklama" rows="2" placeholder="Bayilik Açıklaması" required></textarea>
+      <button type="submit" class="submit-btn">Ekle</button>
+    </form>
+  </section>
+
+  <!-- Yapılan İşler Bölümü -->
+  <section id="yapilanIslerSection" class="admin-section">
+    <h2>Yapılan İşler Yönetimi</h2>
+    <table id="yapilanIslerTable">
+      <thead>
+        <tr><th>Başlık</th><th>Açıklama</th><th>Medya</th><th>İşlemler</th></tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+    <form id="yapilanIslerEkleForm">
+      <h3>Yeni İş Ekle</h3>
+      <input type="text" id="isBaslik" placeholder="Başlık" required />
+      <textarea id="isAciklama" rows="3" placeholder="Açıklama" required></textarea>
+      <input type="url" id="isMedyaUrl" placeholder="Medya (Video veya Görsel URL)" />
+      <button type="submit" class="submit-btn">Ekle</button>
+    </form>
+  </section>
+</main>
+
+<script>
+  // Giriş kontrolü (localStorage'dan kontrol, admin girişi yapılmamışsa login sayfasına yönlendir)
+if(localStorage.getItem('furkanAdminAuth') !== 'true') {
+  alert('Admin girişi gerekli!');
+  window.location.href = 'login.html';
+}
+
+// Çıkış butonu işlevi
+document.getElementById('logoutBtn').addEventListener('click', () => {
+  localStorage.removeItem('furkanAdminAuth');
+  window.location.href = 'login.html';
+});
+
+// Sekmeler ve bölümler
+const btnHizmetler = document.getElementById('btnHizmetler');
+const btnBayilikler = document.getElementById('btnBayilikler');
+const btnYapilanIsler = document.getElementById('btnYapilanIsler');
+
+const hizmetlerSection = document.getElementById('hizmetlerSection');
+const bayiliklerSection = document.getElementById('bayiliklerSection');
+const yapilanIslerSection = document.getElementById('yapilanIslerSection');
+
+function clearActiveTabs() {
+  btnHizmetler.classList.remove('active');
+  btnBayilikler.classList.remove('active');
+  btnYapilanIsler.classList.remove('active');
+
+  hizmetlerSection.classList.remove('active');
+  bayiliklerSection.classList.remove('active');
+  yapilanIslerSection.classList.remove('active');
+}
+
+btnHizmetler.addEventListener('click', () => {
+  clearActiveTabs();
+  btnHizmetler.classList.add('active');
+  hizmetlerSection.classList.add('active');
+  loadHizmetler();
+});
+
+btnBayilikler.addEventListener('click', () => {
+  clearActiveTabs();
+  btnBayilikler.classList.add('active');
+  bayiliklerSection.classList.add('active');
+  loadBayilikler();
+});
+
+btnYapilanIsler.addEventListener('click', () => {
+  clearActiveTabs();
+  btnYapilanIsler.classList.add('active');
+  yapilanIslerSection.classList.add('active');
+  loadYapilanIsler();
+});
+
+// Sayfa yüklendiğinde hizmetler sekmesini göster ve listele
+window.addEventListener('DOMContentLoaded', () => {
+  loadHizmetler();
+});
+
+
+// Hizmetleri yükle ve tabloya yaz
+function loadHizmetler() {
+  const tbody = document.querySelector('#hizmetlerTable tbody');
+  tbody.innerHTML = '';
+  let hizmetler = JSON.parse(localStorage.getItem('furkanHizmetler')) || [];
+
+  hizmetler.forEach((hizmet, index) => {
+    const tr = document.createElement('tr');
+    tr.innerHTML = `
+      <td>${hizmet.baslik}</td>
+      <td>${hizmet.aciklama}</td>
+      <td>
+        <button class="action-btn" onclick="editHizmet(${index})">Düzenle</button>
+        <button class="action-btn" onclick="deleteHizmet(${index})">Sil</button>
+      </td>
+    `;
+    tbody.appendChild(tr);
+  });
+}
+
+// Hizmetler dizisini kaydet
+function saveHizmetler(hizmetler) {
+  localStorage.setItem('furkanHizmetler', JSON.stringify(hizmetler));
+}
+
+// Yeni hizmet ekleme formu submit olayı
+document.getElementById('hizmetEkleForm').addEventListener('submit', function(e) {
+  e.preventDefault();
+  const baslik = document.getElementById('hizmetBaslik').value.trim();
+  const aciklama = document.getElementById('hizmetAciklama').value.trim();
+
+  if(!baslik || !aciklama) {
+    alert('Lütfen başlık ve açıklama giriniz.');
+    return;
+  }
+
+  let hizmetler = JSON.parse(localStorage.getItem('furkanHizmetler')) || [];
+  hizmetler.push({ baslik, aciklama });
+  saveHizmetler(hizmetler);
+  this.reset();
+  loadHizmetler();
+  alert('Hizmet başarıyla eklendi.');
+});
+
+// Hizmet silme fonksiyonu
+function deleteHizmet(index) {
+  if(confirm('Bu hizmeti silmek istediğinize emin misiniz?')) {
+    let hizmetler = JSON.parse(localStorage.getItem('furkanHizmetler')) || [];
+    hizmetler.splice(index, 1);
+    saveHizmetler(hizmetler);
+    loadHizmetler();
+  }
+}
+
+// Hizmet düzenleme fonksiyonu
+function editHizmet(index) {
+  let hizmetler = JSON.parse(localStorage.getItem('furkanHizmetler')) || [];
+  const hizmet = hizmetler[index];
+  const yeniBaslik = prompt('Hizmet Başlığı:', hizmet.baslik);
+  if (yeniBaslik === null) return; // İptal
+  const yeniAciklama = prompt('Hizmet Açıklaması:', hizmet.aciklama);
+  if (yeniAciklama === null) return;
+
+  hizmetler[index] = { baslik: yeniBaslik.trim(), aciklama: yeniAciklama.trim() };
+  saveHizmetler(hizmetler);
+  loadHizmetler();
+}
+
+// Bayilikleri yükle ve tabloya yaz
+function loadBayilikler() {
+  const tbody = document.querySelector('#bayiliklerTable tbody');
+  tbody.innerHTML = '';
+  let bayilikler = JSON.parse(localStorage.getItem('furkanBayilikler')) || [];
+
+  bayilikler.forEach((bayi, index) => {
+    const tr = document.createElement('tr');
+    tr.innerHTML = `
+      <td>${bayi.ad}</td>
+      <td>${bayi.aciklama}</td>
+      <td>
+        <button class="action-btn" onclick="editBayilik(${index})">Düzenle</button>
+        <button class="action-btn" onclick="deleteBayilik(${index})">Sil</button>
+      </td>
+    `;
+    tbody.appendChild(tr);
+  });
+}
+
+// Bayilikler dizisini kaydet
+function saveBayilikler(bayilikler) {
+  localStorage.setItem('furkanBayilikler', JSON.stringify(bayilikler));
+}
+
+// Yeni bayilik ekleme formu submit olayı
+document.getElementById('bayilikEkleForm').addEventListener('submit', function(e) {
+  e.preventDefault();
+  const ad = document.getElementById('bayilikAd').value.trim();
+  const aciklama = document.getElementById('bayilikAciklama').value.trim();
+
+  if(!ad || !aciklama) {
+    alert('Lütfen bayilik adı ve açıklaması giriniz.');
+    return;
+  }
+
+  let bayilikler = JSON.parse(localStorage.getItem('furkanBayilikler')) || [];
+  bayilikler.push({ ad, aciklama });
+  saveBayilikler(bayilikler);
+  this.reset();
+  loadBayilikler();
+  alert('Bayilik başarıyla eklendi.');
+});
+
+// Bayilik silme fonksiyonu
+function deleteBayilik(index) {
+  if(confirm('Bu bayiliği silmek istediğinize emin misiniz?')) {
+    let bayilikler = JSON.parse(localStorage.getItem('furkanBayilikler')) || [];
+    bayilikler.splice(index, 1);
+    saveBayilikler(bayilikler);
+    loadBayilikler();
+  }
+}
+
+// Bayilik düzenleme fonksiyonu
+function editBayilik(index) {
+  let bayilikler = JSON.parse(localStorage.getItem('furkanBayilikler')) || [];
+  const bayi = bayilikler[index];
+  const yeniAd = prompt('Bayilik Adı:', bayi.ad);
+  if (yeniAd === null) return;
+  const yeniAciklama = prompt('Bayilik Açıklaması:', bayi.aciklama);
+  if (yeniAciklama === null) return;
+
+  bayilikler[index] = { ad: yeniAd.trim(), aciklama: yeniAciklama.trim() };
+  saveBayilikler(bayilikler);
+  loadBayilikler();
+}
+
+
+// Yapılan işleri yükle ve tabloya yaz
+function loadYapilanIsler() {
+  const tbody = document.querySelector('#yapilanIslerTable tbody');
+  tbody.innerHTML = '';
+  let isler = JSON.parse(localStorage.getItem('furkanYapilanIsler')) || [];
+
+  isler.forEach((isItem, index) => {
+    const medyaUrl = isItem.medyaUrl;
+    let medyaHtml = 'Yok';
+
+    if (medyaUrl) {
+      if (medyaUrl.match(/\.(jpeg|jpg|gif|png|svg)$/i)) {
+        medyaHtml = `<img src="${medyaUrl}" alt="Medya" class="media-thumb" />`;
+      } else if (medyaUrl.match(/\.(mp4|webm|ogg)$/i)) {
+        medyaHtml = `<video src="${medyaUrl}" controls class="media-thumb"></video>`;
+      } else {
+        medyaHtml = `<a href="${medyaUrl}" target="_blank" style="color:#e63946;">Medya Link</a>`;
+      }
+    }
+
+    const tr = document.createElement('tr');
+    tr.innerHTML = `
+      <td>${isItem.baslik}</td>
+      <td>${isItem.aciklama}</td>
+      <td>${medyaHtml}</td>
+      <td>
+        <button class="action-btn" onclick="editIs(${index})">Düzenle</button>
+        <button class="action-btn" onclick="deleteIs(${index})">Sil</button>
+      </td>
+    `;
+    tbody.appendChild(tr);
+  });
+}
+
+// Yapılan işler dizisini kaydet
+function saveYapilanIsler(isler) {
+  localStorage.setItem('furkanYapilanIsler', JSON.stringify(isler));
+}
+
+// Yeni iş ekleme formu submit olayı
+document.getElementById('yapilanIslerEkleForm').addEventListener('submit', function(e) {
+  e.preventDefault();
+  const baslik = document.getElementById('isBaslik').value.trim();
+  const aciklama = document.getElementById('isAciklama').value.trim();
+  const medyaUrl = document.getElementById('isMedyaUrl').value.trim();
+
+  if(!baslik || !aciklama) {
+    alert('Lütfen başlık ve açıklama giriniz.');
+    return;
+  }
+
+  let isler = JSON.parse(localStorage.getItem('furkanYapilanIsler')) || [];
+  isler.push({ baslik, aciklama, medyaUrl });
+  saveYapilanIsler(isler);
+  this.reset();
+  loadYapilanIsler();
+  alert('İş başarıyla eklendi.');
+});
+
+// İş silme fonksiyonu
+function deleteIs(index) {
+  if(confirm('Bu işi silmek istediğinize emin misiniz?')) {
+    let isler = JSON.parse(localStorage.getItem('furkanYapilanIsler')) || [];
+    isler.splice(index, 1);
+    saveYapilanIsler(isler);
+    loadYapilanIsler();
+  }
+}
+
+// İş düzenleme fonksiyonu
+function editIs(index) {
+  let isler = JSON.parse(localStorage.getItem('furkanYapilanIsler')) || [];
+  const isItem = isler[index];
+
+  const yeniBaslik = prompt('İş Başlığı:', isItem.baslik);
+  if (yeniBaslik === null) return;
+
+  const yeniAciklama = prompt('İş Açıklaması:', isItem.aciklama);
+  if (yeniAciklama === null) return;
+
+  const yeniMedyaUrl = prompt('Medya URL (Video veya Görsel):', isItem.medyaUrl || '');
+  if (yeniMedyaUrl === null) return;
+
+  isler[index] = {
+    baslik: yeniBaslik.trim(),
+    aciklama: yeniAciklama.trim(),
+    medyaUrl: yeniMedyaUrl.trim()
+  };
+  saveYapilanIsler(isler);
+  loadYapilanIsler();
+}
+
+const changePassBtn = document.getElementById('changePassBtn');
+const changePassModal = document.getElementById('changePassModal');
+const cancelChangePass = document.getElementById('cancelChangePass');
+const changePassForm = document.getElementById('changePassForm');
+const changePassError = document.getElementById('changePassError');
+
+changePassBtn.addEventListener('click', () => {
+  changePassError.style.display = 'none';
+  changePassForm.reset();
+  changePassModal.style.display = 'flex';
+});
+
+cancelChangePass.addEventListener('click', () => {
+  changePassModal.style.display = 'none';
+});
+
+changePassForm.addEventListener('submit', (e) => {
+  e.preventDefault();
+  const oldPass = document.getElementById('oldPass').value.trim();
+  const newPass = document.getElementById('newPass').value.trim();
+  const newPassConfirm = document.getElementById('newPassConfirm').value.trim();
+
+  const currentPass = localStorage.getItem('furkanAdminPassword') || 'furkan2025';
+
+  if (oldPass !== currentPass) {
+    changePassError.textContent = "Mevcut şifre yanlış!";
+    changePassError.style.display = 'block';
+    return;
+  }
+  if (newPass.length < 6) {
+    changePassError.textContent = "Yeni şifre en az 6 karakter olmalı!";
+    changePassError.style.display = 'block';
+    return;
+  }
+  if (newPass !== newPassConfirm) {
+    changePassError.textContent = "Yeni şifreler uyuşmuyor!";
+    changePassError.style.display = 'block';
+    return;
+  }
+
+  localStorage.setItem('furkanAdminPassword', newPass);
+  alert('Şifre başarıyla değiştirildi! Lütfen tekrar giriş yapın.');
+  changePassModal.style.display = 'none';
+
+  // Çıkış yap
+  localStorage.removeItem('furkanAdminAuth');
+  window.location.href = 'login.html';
+});
+
+</script>
+<div id="changePassModal" style="display:none; position:fixed; top:0; left:0; width:100vw; height:100vh; background:rgba(0,0,0,0.8); display:flex; justify-content:center; align-items:center; z-index:9999;">
+  <div style="background:#222; padding:2rem; border-radius:12px; width:320px; color:#eee; box-shadow: 0 0 20px #e63946;">
+    <h3 style="margin-top:0; color:#e63946;">Şifre Değiştir</h3>
+    <form id="changePassForm">
+      <input type="password" id="oldPass" placeholder="Mevcut Şifre" required style="width:100%; padding:0.7rem; margin-bottom:1rem; border-radius:8px; border:none; background:#333; color:#eee; font-size:1rem;" />
+      <input type="password" id="newPass" placeholder="Yeni Şifre" required style="width:100%; padding:0.7rem; margin-bottom:1rem; border-radius:8px; border:none; background:#333; color:#eee; font-size:1rem;" />
+      <input type="password" id="newPassConfirm" placeholder="Yeni Şifre Tekrar" required style="width:100%; padding:0.7rem; margin-bottom:1rem; border-radius:8px; border:none; background:#333; color:#eee; font-size:1rem;" />
+      <div style="text-align:right;">
+        <button type="button" id="cancelChangePass" style="background:#444; border:none; padding:0.5rem 1rem; border-radius:8px; color:#e63946; cursor:pointer; margin-right:1rem;">İptal</button>
+        <button type="submit" style="background:#e63946; border:none; padding:0.5rem 1rem; border-radius:8px; color:#121212; cursor:pointer; font-weight:700;">Kaydet</button>
+      </div>
+      <p id="changePassError" style="color:#ff4d4d; margin-top:1rem; display:none;"></p>
+    </form>
+  </div>
+</div>
+
+</body>
+</html>

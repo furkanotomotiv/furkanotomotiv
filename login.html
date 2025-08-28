@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Furkan Otomotiv Admin Girişi</title>
+  <style>
+    body {
+      margin: 0; height: 100vh;
+      display: flex; justify-content: center; align-items: center;
+      background: #121212;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      color: #eee;
+    }
+    .login-container {
+      background: #222;
+      padding: 2rem 3rem;
+      border-radius: 12px;
+      box-shadow: 0 0 20px #e63946;
+      width: 320px;
+    }
+    h2 {
+      margin-bottom: 1.5rem;
+      color: #e63946;
+      text-align: center;
+    }
+    input[type="password"] {
+      width: 100%;
+      padding: 0.8rem;
+      margin-bottom: 1.3rem;
+      border-radius: 8px;
+      border: none;
+      background: #333;
+      color: #eee;
+      font-size: 1rem;
+    }
+    button {
+      width: 100%;
+      padding: 0.8rem;
+      background: #e63946;
+      border: none;
+      border-radius: 8px;
+      color: white;
+      font-weight: 700;
+      font-size: 1.1rem;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+    button:hover {
+      background: #a22222;
+    }
+    .error {
+      color: #ff4d4d;
+      margin-bottom: 1rem;
+      text-align: center;
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <div class="login-container">
+    <h2>Admin Girişi</h2>
+    <div class="error" id="errorMsg"></div>
+    <form id="loginForm">
+      <input type="password" id="password" placeholder="Şifreyi girin" autocomplete="off" required />
+      <button type="submit">Giriş Yap</button>
+    </form>
+  </div>
+
+  <script>
+    const defaultPassword = "furkan2025";
+
+// Şifreyi localStorage’dan oku, yoksa default olarak ayarla
+function getStoredPassword() {
+  return localStorage.getItem('furkanAdminPassword') || defaultPassword;
+}
+
+document.getElementById('loginForm').addEventListener('submit', function(e) {
+  e.preventDefault();
+  const passInput = document.getElementById('password').value.trim();
+  const errorMsg = document.getElementById('errorMsg');
+
+  if(passInput === getStoredPassword()) {
+    localStorage.setItem('furkanAdminAuth', 'true');
+    window.location.href = 'admin.html'; 
+  } else {
+    errorMsg.textContent = "Şifre yanlış! Tekrar deneyin.";
+    errorMsg.style.display = 'block';
+    this.password.value = '';
+    this.password.focus();
+  }
+});
+
+  </script>
+</body>
+</html>

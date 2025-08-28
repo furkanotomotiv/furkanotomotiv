@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Bayilikler - Furkan Otomotiv</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+  <style>
+    body {
+      margin: 0;
+      background: #0e0e0e;
+      font-family: Arial, sans-serif;
+      color: #fff;
+    }
+
+    /* Genel başlık */
+    .page-header {
+      padding: 3rem 1rem 1.5rem;
+      text-align: center;
+      color: #fff;
+    }
+    .page-header h1 {
+      font-size: 2.8rem;
+      margin-bottom: 0.3rem;
+      color: #e63946;
+      text-shadow: 0 0 6px rgba(230, 57, 70, 0.8);
+    }
+    .page-header p {
+      font-size: 1.2rem;
+      color: #ddd;
+    }
+
+    /* BAYİLİKLER GRID - TEK SÜTUN */
+    .brands {
+      max-width: 600px;
+      margin: 0 auto 4rem;
+      padding: 0 1rem;
+    }
+    .brands-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+    }
+
+    /* BAYİLİK KARTLARI */
+    .brand-card {
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 16px;
+      padding: 2rem;
+      text-align: center;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.6);
+      backdrop-filter: blur(8px);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      cursor: pointer;
+      height: 220px; /* 🔥 Hepsi eşit yükseklik */
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .brand-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 12px 36px rgba(230, 57, 70, 0.7);
+    }
+    .brand-card img {
+      max-width: 180px;
+      max-height: 100px;
+      object-fit: contain;
+      filter: drop-shadow(0 0 10px rgba(255,255,255,0.2));
+      transition: transform 0.3s ease;
+    }
+    .brand-card:hover img {
+      transform: scale(1.05);
+      filter: drop-shadow(0 0 15px rgba(230,57,70,0.7));
+    }
+
+    /* FOOTER */
+    footer {
+      text-align: center;
+      padding: 1.5rem;
+      background: #111;
+      color: #aaa;
+      font-size: 0.9rem;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header>
+    <nav class="navbar">
+      <div class="logo">Furkan Otomotiv</div>
+      <div class="hamburger" id="hamburger"><span></span><span></span><span></span></div>
+      <ul class="nav-links">
+        <li><a href="index.html">Ana Sayfa</a></li>
+        <li><a href="hizmetler.html">Hizmetler</a></li>
+        <li><a href="bayilikler.html" class="active">Bayilikler</a></li>
+        <li><a href="iletisim.html">İletişim</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- BAYİLİKLER BAŞLIK -->
+  <section class="page-header container" data-aos="fade-up" style="margin-top: 90px;">
+    <h1>Bayiliklerimiz</h1>
+    <p>Birlikte çalıştığımız markalar</p>
+  </section>
+
+  <!-- BAYİLİK KARTLARI -->
+  <section class="brands container">
+    <div class="brands-grid">
+      <article class="brand-card" data-aos="fade-up" data-aos-delay="100">
+        <img src="mutlu.png" alt="Mutlu Akü" />
+      </article>
+
+      <article class="brand-card" data-aos="fade-up" data-aos-delay="200">
+        <img src="varta.png" alt="Varta" />
+      </article>
+
+      <article class="brand-card" data-aos="fade-up" data-aos-delay="300">
+        <img src="autopower.png" alt="Autopower" />
+      </article>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container">
+      <p>© 2025 Furkan Otomotiv. Tüm hakları saklıdır.</p>
+    </div>
+  </footer>
+
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>
+    AOS.init({ duration: 900, once: true });
+  </script>
+</body>
+</html>
