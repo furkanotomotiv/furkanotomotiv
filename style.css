@@ -25,46 +25,44 @@ img {
   margin: 0 auto;
 }
 
-/* ===========================
-   NAVBAR
-=========================== */
-/* Header Glass Effect */
-.header-glass {
-  position: fixed; /* her zaman en üstte */
+/* Header - Şeffaf Kırmızı Bar */
+header {
+  position: fixed;       /* sayfanın üstünde sabit */
   top: 0;
   left: 0;
   width: 100%;
-  z-index: 999;
-  background: rgba(200, 0, 0, 0.6); /* kırmızı + şeffaflık */
-  backdrop-filter: blur(10px); /* cam efekti */
-  -webkit-backdrop-filter: blur(10px);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  z-index: 1000;
+  background: rgba(200, 0, 0, 0.7); /* kırmızı + şeffaf */
+  backdrop-filter: blur(6px);       /* cam efekti */
+  -webkit-backdrop-filter: blur(6px);
 }
 
-/* Navbar düzeni */
+/* Navbar Genel */
 .navbar {
+  max-width: 1200px;
+  margin: auto;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 15px 40px;
+  padding: 15px 20px;
   color: #fff;
 }
 
-/* Logo yazısı */
+/* Logo */
 .logo {
   font-size: 1.6rem;
   font-weight: bold;
   color: #fff;
 }
 
-/* Menü linkleri */
+/* Menü Linkleri */
 .nav-links {
   display: flex;
   list-style: none;
 }
 
 .nav-links li {
-  margin-left: 25px;
+  margin-left: 20px;
 }
 
 .nav-links a {
@@ -76,7 +74,7 @@ img {
 
 .nav-links a:hover,
 .nav-links a.active {
-  color: #ffd700; /* hoverda altın sarısı gibi */
+  color: #ffd700; /* hover olduğunda altın sarısı */
 }
 
 /* Hamburger Menü */
@@ -90,22 +88,22 @@ img {
   height: 3px;
   width: 25px;
   background: white;
-  margin: 4px;
+  margin: 4px 0;
   border-radius: 5px;
-  transition: 0.3s;
 }
 
-/* Responsive */
+/* Mobil Görünüm */
 @media (max-width: 768px) {
   .nav-links {
     display: none;
     flex-direction: column;
-    width: 100%;
-    background: rgba(200, 0, 0, 0.9);
+    background: rgba(200, 0, 0, 0.95);
     position: absolute;
-    top: 60px;
+    top: 60px; /* header yüksekliğine göre ayar */
     left: 0;
-    padding: 20px;
+    width: 100%;
+    padding: 15px 0;
+    text-align: center;
   }
 
   .nav-links.active {
@@ -116,6 +114,12 @@ img {
     display: flex;
   }
 }
+
+/* İçerik header'ın altına sıkışmasın diye */
+body {
+  padding-top: 70px; /* header yüksekliği kadar boşluk bırakır */
+}
+
 
 
 /* ===========================
@@ -336,4 +340,5 @@ footer {
     display: flex;
   }
 }
+
 
