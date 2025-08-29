@@ -25,27 +25,30 @@ img {
   margin: 0 auto;
 }
 
-/* Header - Şeffaf Kırmızı Bar */
+/* Header - Buzlu Cam Efektli */
 header {
-  position: fixed;       /* sayfanın üstünde sabit */
+  position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   z-index: 1000;
-  background: rgba(200, 0, 0, 0.7); /* kırmızı + şeffaf */
-  backdrop-filter: blur(6px);       /* cam efekti */
-  -webkit-backdrop-filter: blur(6px);
+
+  background: rgba(255, 255, 255, 0.1); /* çok şeffaf beyaz */
+  backdrop-filter: blur(12px) saturate(180%);
+  -webkit-backdrop-filter: blur(12px) saturate(180%);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+
+  box-shadow: 0 4px 20px rgba(0,0,0,0.2); /* hafif gölge */
 }
 
-/* Navbar Genel */
+/* Navbar düzeni */
 .navbar {
   max-width: 1200px;
   margin: auto;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 15px 20px;
-  color: #fff;
+  padding: 15px 25px;
 }
 
 /* Logo */
@@ -53,28 +56,32 @@ header {
   font-size: 1.6rem;
   font-weight: bold;
   color: #fff;
+  letter-spacing: 1px;
 }
 
-/* Menü Linkleri */
+/* Menü */
 .nav-links {
   display: flex;
   list-style: none;
 }
 
 .nav-links li {
-  margin-left: 20px;
+  margin-left: 25px;
 }
 
 .nav-links a {
   text-decoration: none;
   color: #fff;
   font-weight: 500;
-  transition: color 0.3s ease;
+  padding: 6px 12px;
+  border-radius: 8px;
+  transition: all 0.3s ease;
 }
 
 .nav-links a:hover,
 .nav-links a.active {
-  color: #ffd700; /* hover olduğunda altın sarısı */
+  background: rgba(255, 255, 255, 0.2);
+  color: #ffd700;
 }
 
 /* Hamburger Menü */
@@ -90,20 +97,24 @@ header {
   background: white;
   margin: 4px 0;
   border-radius: 5px;
+  transition: 0.3s;
 }
 
-/* Mobil Görünüm */
+/* Mobil */
 @media (max-width: 768px) {
   .nav-links {
     display: none;
     flex-direction: column;
-    background: rgba(200, 0, 0, 0.95);
+    background: rgba(20, 20, 20, 0.6);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
     position: absolute;
-    top: 60px; /* header yüksekliğine göre ayar */
+    top: 70px;
     left: 0;
     width: 100%;
     padding: 15px 0;
     text-align: center;
+    border-top: 1px solid rgba(255,255,255,0.2);
   }
 
   .nav-links.active {
@@ -115,9 +126,9 @@ header {
   }
 }
 
-/* İçerik header'ın altına sıkışmasın diye */
+/* Sayfa içerik header altında başlasın */
 body {
-  padding-top: 70px; /* header yüksekliği kadar boşluk bırakır */
+  padding-top: 80px;
 }
 
 
@@ -340,5 +351,6 @@ footer {
     display: flex;
   }
 }
+
 
 
