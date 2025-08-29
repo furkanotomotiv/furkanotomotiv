@@ -28,44 +28,55 @@ img {
 /* ===========================
    NAVBAR
 =========================== */
-header {
-  position: fixed;
+/* Header Glass Effect */
+.header-glass {
+  position: fixed; /* her zaman en üstte */
   top: 0;
+  left: 0;
   width: 100%;
-  background: rgba(0, 0, 0, 0.85);
-  backdrop-filter: blur(6px);
   z-index: 999;
+  background: rgba(200, 0, 0, 0.6); /* kırmızı + şeffaflık */
+  backdrop-filter: blur(10px); /* cam efekti */
+  -webkit-backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
 }
 
+/* Navbar düzeni */
 .navbar {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  height: 70px;
-  padding: 0 20px;
+  padding: 15px 40px;
+  color: #fff;
 }
 
+/* Logo yazısı */
 .logo {
   font-size: 1.6rem;
   font-weight: bold;
-  color: #e63946;
+  color: #fff;
 }
 
+/* Menü linkleri */
 .nav-links {
-  list-style: none;
   display: flex;
-  gap: 25px;
+  list-style: none;
+}
+
+.nav-links li {
+  margin-left: 25px;
 }
 
 .nav-links a {
-  color: #fff;
   text-decoration: none;
-  font-size: 1rem;
-  transition: color 0.3s;
+  color: #fff;
+  font-weight: 500;
+  transition: color 0.3s ease;
 }
 
-.nav-links a:hover {
-  color: #e63946;
+.nav-links a:hover,
+.nav-links a.active {
+  color: #ffd700; /* hoverda altın sarısı gibi */
 }
 
 /* Hamburger Menü */
@@ -73,14 +84,39 @@ header {
   display: none;
   flex-direction: column;
   cursor: pointer;
-  gap: 5px;
 }
 
 .hamburger span {
-  width: 25px;
   height: 3px;
-  background: #fff;
+  width: 25px;
+  background: white;
+  margin: 4px;
+  border-radius: 5px;
+  transition: 0.3s;
 }
+
+/* Responsive */
+@media (max-width: 768px) {
+  .nav-links {
+    display: none;
+    flex-direction: column;
+    width: 100%;
+    background: rgba(200, 0, 0, 0.9);
+    position: absolute;
+    top: 60px;
+    left: 0;
+    padding: 20px;
+  }
+
+  .nav-links.active {
+    display: flex;
+  }
+
+  .hamburger {
+    display: flex;
+  }
+}
+
 
 /* ===========================
    HERO
@@ -300,3 +336,4 @@ footer {
     display: flex;
   }
 }
+
