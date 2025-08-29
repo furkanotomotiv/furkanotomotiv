@@ -27,21 +27,22 @@ img {
 
 /* Header - Buzlu Cam Efektli */
 /* Header - Neon Glass Efekt */
+/* Header - Neon Glass Efekt */
 header {
   position: fixed;
-  top: 15px;         /* sayfa üstüne yapışmasın, biraz boşluk */
+  top: 15px;
   left: 50%;
   transform: translateX(-50%);
-  width: 90%;        /* kenarlardan boşluk */
+  width: 90%;
   z-index: 1000;
 
   background: rgba(255, 255, 255, 0.15); /* şeffaf beyaz cam */
   backdrop-filter: blur(12px) saturate(180%);
   -webkit-backdrop-filter: blur(12px) saturate(180%);
 
-  border-radius: 20px; /* köşeleri yumuşak */
-  border: 1px solid rgba(255, 0, 0, 0.6); /* kırmızı çerçeve */
-  box-shadow: 0 0 15px rgba(255, 0, 0, 0.7); /* kırmızı neon parlama */
+  border-radius: 20px;
+  border: 1px solid rgba(255, 0, 0, 0.6);
+  box-shadow: 0 0 15px rgba(255, 0, 0, 0.7);
 }
 
 /* Navbar */
@@ -104,21 +105,37 @@ header {
   transition: 0.3s;
 }
 
-/* Mobil Menü */
+/* 🔹 Mobil Görünüm */
 @media (max-width: 768px) {
+  header {
+    top: 0;               /* üst boşluğu kaldır */
+    left: 0;
+    transform: none;      /* ortalamayı kaldır */
+    width: 100%;          /* tam genişlik */
+    border-radius: 0;     /* köşeleri düz olsun */
+    box-shadow: 0 0 10px rgba(255, 0, 0, 0.5);
+  }
+
+  .navbar {
+    padding: 12px 15px;   /* daha az padding */
+  }
+
+  .logo {
+    font-size: 1.2rem;    /* logo küçülür */
+  }
+
   .nav-links {
     display: none;
     flex-direction: column;
     background: rgba(255, 255, 255, 0.15);
     backdrop-filter: blur(15px);
     -webkit-backdrop-filter: blur(15px);
-
-    border-radius: 15px;
+    border-radius: 0 0 15px 15px;
     border: 1px solid rgba(255, 0, 0, 0.6);
     box-shadow: 0 0 15px rgba(255, 0, 0, 0.7);
 
     position: absolute;
-    top: 70px;
+    top: 100%; /* header'ın altından başlasın */
     left: 0;
     width: 100%;
     padding: 15px 0;
@@ -137,7 +154,8 @@ header {
 /* İçerik header'a yapışmasın */
 body {
   padding-top: 120px;
-                           }
+}
+
      
 
 
@@ -360,6 +378,7 @@ footer {
     display: flex;
   }
 }
+
 
 
 
