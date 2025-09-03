@@ -1,68 +1,228 @@
 <!DOCTYPE html>
 <html lang="tr">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Furkan Otomotiv</title>
-  <link rel="stylesheet" href="style.css">
-  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Furkan Otomotiv</title>
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+  <style>
+    /* Reset */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background: #111;
+      color: #fff;
+      line-height: 1.6;
+    }
+
+    /* Navbar */
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 30px;
+      background: rgba(0, 0, 0, 0.8);
+      position: fixed;
+      width: 100%;
+      top: 0;
+      z-index: 999;
+    }
+
+    /* Logo */
+    .logo {
+      font-size: 22px;
+      font-weight: bold;
+      color: #fff;
+    }
+
+    /* Menü */
+    .nav-links {
+      list-style: none;
+      display: flex;
+      gap: 25px;
+    }
+
+    .nav-links li a {
+      text-decoration: none;
+      color: #fff;
+      font-size: 16px;
+      transition: color 0.3s ease;
+    }
+
+    .nav-links li a:hover,
+    .nav-links li a.active {
+      color: #ffcc00;
+    }
+
+    /* Hamburger Menü */
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      cursor: pointer;
+      gap: 5px;
+    }
+
+    .hamburger span {
+      width: 25px;
+      height: 3px;
+      background: #fff;
+      border-radius: 2px;
+      transition: 0.3s;
+    }
+
+    /* Hero */
+    .hero {
+      height: 100vh;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      color: #fff;
+      overflow: hidden;
+    }
+
+    .hero-video {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: -1;
+    }
+
+    .hero-content {
+      max-width: 600px;
+      padding: 20px;
+    }
+
+    .hero h1 {
+      font-size: 3rem;
+      margin-bottom: 10px;
+    }
+
+    .hero p {
+      font-size: 1.2rem;
+      margin-bottom: 20px;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 12px 25px;
+      background: #ffcc00;
+      color: #000;
+      font-weight: bold;
+      border-radius: 6px;
+      text-decoration: none;
+      transition: 0.3s;
+    }
+
+    .btn:hover {
+      background: #e6b800;
+    }
+
+    /* Footer */
+    footer {
+      background: #000;
+      text-align: center;
+      padding: 15px;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .nav-links {
+        position: absolute;
+        top: 70px;
+        right: -100%;
+        flex-direction: column;
+        background: rgba(0, 0, 0, 0.95);
+        width: 220px;
+        padding: 20px;
+        gap: 20px;
+        transition: right 0.3s ease;
+      }
+
+      .nav-links.active {
+        right: 0;
+      }
+
+      .hamburger {
+        display: flex;
+      }
+
+      .hero h1 {
+        font-size: 2rem;
+      }
+
+      .hero p {
+        font-size: 1rem;
+      }
+    }
+  </style>
 </head>
 <body>
 
-  <!-- Header -->
-  <header>
-    <nav class="navbar">
-      <div class="logo">Furkan Otomotiv</div>
+  <!-- Header -->
+  <header>
+    <nav class="navbar">
+      <div class="logo">Furkan Otomotiv</div>
 
-      <!-- Hamburger Menü Butonu -->
-      <div class="hamburger" id="hamburger">
-        <span></span>
-        <span></span>
-        <span></span>
-      </div>
+      <!-- Hamburger Menü Butonu -->
+      <div class="hamburger" id="hamburger">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
 
-      <!-- Menü Linkleri -->
-      <ul class="nav-links" id="nav-links">
-        <li><a href="index.html" class="active">Ana Sayfa</a></li>
-        <li><a href="hizmetler.html">Hizmetler</a></li>
-        <li><a href="bayilikler.html">Bayilikler</a></li>
-        <li><a href="iletisim.html">İletişim</a></li>
-      </ul>
-    </nav>
-  </header>
+      <!-- Menü Linkleri -->
+      <ul class="nav-links" id="nav-links">
+        <li><a href="index.html" class="active">Ana Sayfa</a></li>
+        <li><a href="hizmetler.html">Hizmetler</a></li>
+        <li><a href="bayilikler.html">Bayilikler</a></li>
+        <li><a href="iletisim.html">İletişim</a></li>
+      </ul>
+    </nav>
+  </header>
 
-  <!-- Hero Bölümü -->
-  <section class="hero">
-    <video autoplay muted loop class="hero-video">
-      <source src="hero-bg.mp4" type="video/mp4">
-    </video>
-    <div class="hero-content" data-aos="fade-up">
-      <h1>Furkan Otomotiv</h1>
-      <p>Oto Elektrik, Klima, Multimedya ve Daha Fazlası</p>
-      <a href="hizmetler.html" class="btn">Hizmetlerimizi Gör</a>
-    </div>
-  </section>
+  <!-- Hero Bölümü -->
+  <section class="hero">
+    <video autoplay muted loop class="hero-video">
+      <source src="hero-bg.mp4" type="video/mp4">
+    </video>
+    <div class="hero-content" data-aos="fade-up">
+      <h1>Furkan Otomotiv</h1>
+      <p>Oto Elektrik, Klima, Multimedya ve Daha Fazlası</p>
+      <a href="hizmetler.html" class="btn">Hizmetlerimizi Gör</a>
+    </div>
+  </section>
 
-  <!-- Footer -->
-  <footer>
-    <div class="container">
-      <p>© 2025 Furkan Otomotiv. Tüm hakları saklıdır.</p>
-    </div>
-  </footer>
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <p>© 2025 Furkan Otomotiv. Tüm hakları saklıdır.</p>
+    </div>
+  </footer>
 
-  <!-- Scriptler -->
-  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-  <script>
-    AOS.init({ duration: 900, once: true });
+  <!-- Scriptler -->
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>
+    AOS.init({ duration: 900, once: true });
 
-    // Hamburger Menü Scripti
-    const hamburger = document.getElementById('hamburger');
-    const navLinks = document.getElementById('nav-links');
+    // Hamburger Menü Scripti
+    const hamburger = document.getElementById('hamburger');
+    const navLinks = document.getElementById('nav-links');
 
-    hamburger.addEventListener('click', () => {
-      navLinks.classList.toggle('active');
-      hamburger.classList.toggle('active');
-    });
-  </script>
+    hamburger.addEventListener('click', () => {
+      navLinks.classList.toggle('active');
+      hamburger.classList.toggle('active');
+    });
+  </script>
 </body>
 </html>
